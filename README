@@ -1,0 +1,85 @@
+# Product Manager
+
+## Deskripsi
+
+**Product Manager** adalah aplikasi web sederhana yang digunakan untuk mengelola data produk. Aplikasi ini dibuat menggunakan PHP dan MySQL/MariaDB serta menerapkan konsep CRUD dan validasi data.
+
+## Fitur
+
+- Menambahkan produk
+- Menampilkan daftar produk
+- Mengedit produk
+- Menghapus produk
+- Validasi nama produk minimal 3 karakter
+- Validasi harga dan stok tidak boleh negatif
+- Validasi nama produk harus unik
+- Prepared Statement
+- CSRF Token pada proses hapus
+- Perlindungan output menggunakan `htmlspecialchars()`
+
+## Teknologi
+
+- PHP
+- MySQL / MariaDB
+- HTML
+- CSS
+- XAMPP
+- Visual Studio Code
+
+## Struktur Project
+
+```text
+product-manager/
+│
+├── config/
+│   └── database.php
+│
+└── public/
+    ├── index.php
+    ├── tambah.php
+    ├── edit.php
+    └── hapus.php
+
+Keterangan
+database.php → mengatur koneksi aplikasi dengan database.
+index.php → menampilkan daftar produk.
+tambah.php → menambahkan produk baru.
+edit.php → mengubah data produk.
+hapus.php → menghapus produk.
+
+DATABASE
+- Nama database:
+product_manager
+- Nama tabel:
+products
+
+Data yang disimpan:
+_ ID
+- Nama produk
+- Kategori
+- Harga
+- Stok
+- Waktu dibuat
+
+Cara Menjalankan:
+1. Jalankan Apache dan MySQL melalui XAMPP.
+2. Letakkan folder project di: C:\xampp\htdocs\product-manager
+3. Pastikan database product_manager sudah dibuat.
+4. Buka file config/database.php dan sesuaikan konfigurasi database.
+5. Jalankan aplikasi melalui browser:
+http://localhost/product-manager/public/
+
+
+Pengujian
+| Pengujian                   | Hasil                    |
+| --------------------------- | ------------------------ |
+| Tambah produk               | Berhasil                 |
+| Edit produk                 | Berhasil                 |
+| Hapus produk                | Berhasil                 |
+| Nama kurang dari 3 karakter | Ditolak                  |
+| Harga negatif               | Ditolak                  |
+| Stok negatif                | Ditolak                  |
+| Nama produk duplikat        | Ditolak                  |
+| Input HTML/XSS              | Ditampilkan sebagai teks |
+| Refresh setelah tambah      | Tidak terjadi duplikasi  |
+```
