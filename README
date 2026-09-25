@@ -1,8 +1,8 @@
-# Product Manager
+Product Manager
 
-## Deskripsi
+Deskripsi
 
-**Product Manager** adalah aplikasi web sederhana yang digunakan untuk mengelola data produk. Aplikasi ini dibuat menggunakan PHP dan MySQL/MariaDB serta menerapkan konsep CRUD dan validasi data.
+Product Manager adalah aplikasi web sederhana yang digunakan untuk mengelola data produk. Aplikasi ini dibuat menggunakan PHP dan MySQL/MariaDB serta menerapkan konsep CRUD dan validasi data.
 
 ## Fitur
 
