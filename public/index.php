@@ -19,167 +19,134 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <head>
 
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>ATK Store</title>
+    <title>Product Manager</title>
 
     <style>
 
-        * {
-            box-sizing: border-box;
-        }
-
         body {
-            margin: 0;
             font-family: Arial, sans-serif;
-            background-color: #f5f7fb;
-            color: #333;
+            background-color: #eef5ff;
+            margin: 0;
+            padding: 30px;
         }
-
-        /* HEADER */
 
         .header {
-            background-color: #3b82f6;
-            color: white;
-            padding: 25px 20px;
+            background-color: #dbeafe;
+            padding: 20px;
+            margin-bottom: 25px;
+            border-radius: 8px;
         }
 
         .header-content {
-            max-width: 1100px;
+            max-width: 1000px;
             margin: auto;
+
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
         .header h1 {
-            margin: 0 0 5px;
-            font-size: 27px;
-        }
-
-        .header p {
-            margin: 0;
-            font-size: 14px;
-        }
-
-        /* BUTTON */
-
-        .btn-tambah {
-            background-color: #fbbf24;
-            color: #333;
-            padding: 10px 15px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .btn-tambah:hover {
-            background-color: #f59e0b;
-        }
-
-        /* CONTAINER */
-
-        .container {
-            max-width: 1100px;
-            margin: 30px auto;
-            padding: 0 20px;
-        }
-
-        .judul {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-
-        .judul h2 {
             margin: 0;
             color: #2563eb;
         }
 
-        /* TABLE */
+        .header p {
+            margin-bottom: 0;
+            color: #64748b;
+        }
 
-        .table-container {
+        .tambah {
+            background-color: #3b82f6;
+            color: white;
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .tambah:hover {
+            background-color: #2563eb;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: auto;
             background-color: white;
+            padding: 25px;
             border-radius: 8px;
-            overflow-x: auto;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        h2 {
+            color: #2563eb;
+            margin-top: 0;
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
+            margin-top: 20px;
         }
 
         th {
-            background-color: #3b82f6;
+            background-color: #60a5fa;
             color: white;
-            padding: 13px;
+            padding: 12px;
             text-align: left;
         }
 
         td {
             padding: 12px;
-            border-bottom: 1px solid #e5e7eb;
+            border-bottom: 1px solid #ddd;
         }
 
         tr:hover {
-            background-color: #f8fafc;
-        }
-
-        /* BUTTON AKSI */
-
-        .btn-edit {
-            background-color: #facc15;
-            color: #333;
-            padding: 7px 10px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-size: 13px;
-        }
-
-        .btn-edit:hover {
-            background-color: #eab308;
-        }
-
-        .btn-hapus {
-            background-color: #ef4444;
-            color: white;
-            padding: 7px 10px;
-            border: none;
-            border-radius: 5px;
-            font-size: 13px;
-            cursor: pointer;
-        }
-
-        .btn-hapus:hover {
-            background-color: #dc2626;
+            background-color: #f8fbff;
         }
 
         .aksi {
             display: flex;
-            gap: 7px;
+            gap: 8px;
             align-items: center;
         }
 
-        .aksi form {
-            margin: 0;
+        .edit {
+            background-color: #dbeafe;
+            color: #2563eb;
+            padding: 7px 12px;
+            text-decoration: none;
+            border-radius: 5px;
         }
 
-        /* EMPTY */
+        .edit:hover {
+            background-color: #bfdbfe;
+        }
+
+        .hapus {
+            background-color: #fee2e2;
+            color: #dc2626;
+            padding: 7px 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .hapus:hover {
+            background-color: #fecaca;
+        }
 
         .kosong {
-            background-color: white;
-            padding: 40px;
             text-align: center;
-            border-radius: 8px;
-            color: #777;
+            color: #64748b;
+            padding: 30px;
         }
 
-        /* RESPONSIVE */
-
         @media (max-width: 600px) {
+
+            body {
+                padding: 15px;
+            }
 
             .header-content {
                 flex-direction: column;
@@ -187,20 +154,18 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 gap: 15px;
             }
 
-            .btn-tambah {
-                display: inline-block;
+            .tambah {
+                width: 100%;
+                text-align: center;
             }
 
-            .judul {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 10px;
+            table {
+                font-size: 13px;
             }
 
             th,
             td {
-                padding: 9px;
-                font-size: 13px;
+                padding: 8px;
             }
 
         }
@@ -212,154 +177,147 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <body>
 
 
-<header class="header">
+<div class="header">
 
     <div class="header-content">
 
         <div>
-            <h1>ATK Store</h1>
+
+            <h1>📦 Product Manager</h1>
 
             <p>
-                Sistem Pengelolaan Produk Alat Tulis Kantor
+                Kelola data produk
             </p>
+
         </div>
 
-        <a href="tambah.php" class="btn-tambah">
+        <a href="tambah.php" class="tambah">
             + Tambah Produk
         </a>
 
     </div>
 
-</header>
+</div>
 
 
-<main class="container">
+<div class="container">
 
-
-    <div class="judul">
-
-        <h2>Daftar Produk</h2>
-
-    </div>
+    <h2>Daftar Produk</h2>
 
 
     <?php if (count($products) > 0): ?>
 
-        <div class="table-container">
+        <table>
 
-            <table>
+            <thead>
 
-                <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Nama Produk</th>
+                    <th>Kategori</th>
+                    <th>Harga</th>
+                    <th>Stok</th>
+                    <th>Aksi</th>
+                </tr>
+
+            </thead>
+
+
+            <tbody>
+
+                <?php foreach ($products as $index => $product): ?>
 
                     <tr>
-                        <th>No</th>
-                        <th>Nama Produk</th>
-                        <th>Kategori</th>
-                        <th>Harga</th>
-                        <th>Stok</th>
-                        <th>Aksi</th>
+
+                        <td>
+                            <?= $index + 1 ?>
+                        </td>
+
+                        <td>
+                            <?= htmlspecialchars(
+                                $product['nama'],
+                                ENT_QUOTES,
+                                'UTF-8'
+                            ) ?>
+                        </td>
+
+                        <td>
+                            <?= htmlspecialchars(
+                                $product['kategori'],
+                                ENT_QUOTES,
+                                'UTF-8'
+                            ) ?>
+                        </td>
+
+                        <td>
+                            Rp <?= number_format(
+                                $product['harga'],
+                                0,
+                                ',',
+                                '.'
+                            ) ?>
+                        </td>
+
+                        <td>
+                            <?= (int) $product['stok'] ?>
+                        </td>
+
+                        <td>
+
+                            <div class="aksi">
+
+                                <a
+                                    href="edit.php?id=<?= (int) $product['id'] ?>"
+                                    class="edit"
+                                >
+                                    Edit
+                                </a>
+
+
+                                <form
+                                    action="hapus.php"
+                                    method="POST"
+                                    style="margin: 0;"
+                                    onsubmit="return confirm('Yakin ingin menghapus produk ini?');"
+                                >
+
+                                    <input
+                                        type="hidden"
+                                        name="id"
+                                        value="<?= (int) $product['id'] ?>"
+                                    >
+
+                                    <input
+                                        type="hidden"
+                                        name="csrf_token"
+                                        value="<?= htmlspecialchars(
+                                            $_SESSION['csrf_token'],
+                                            ENT_QUOTES,
+                                            'UTF-8'
+                                        ) ?>"
+                                    >
+
+                                    <button
+                                        type="submit"
+                                        class="hapus"
+                                    >
+                                        Hapus
+                                    </button>
+
+                                </form>
+
+                            </div>
+
+                        </td>
+
                     </tr>
 
-                </thead>
+                <?php endforeach; ?>
 
+            </tbody>
 
-                <tbody>
+        </table>
 
-                    <?php foreach ($products as $index => $product): ?>
-
-                        <tr>
-
-                            <td>
-                                <?= $index + 1 ?>
-                            </td>
-
-                            <td>
-                                <?= htmlspecialchars(
-                                    $product['nama'],
-                                    ENT_QUOTES,
-                                    'UTF-8'
-                                ) ?>
-                            </td>
-
-                            <td>
-                                <?= htmlspecialchars(
-                                    $product['kategori'],
-                                    ENT_QUOTES,
-                                    'UTF-8'
-                                ) ?>
-                            </td>
-
-                            <td>
-                                Rp <?= number_format(
-                                    $product['harga'],
-                                    0,
-                                    ',',
-                                    '.'
-                                ) ?>
-                            </td>
-
-                            <td>
-                                <?= (int) $product['stok'] ?>
-                            </td>
-
-                            <td>
-
-                                <div class="aksi">
-
-                                    <a
-                                        href="edit.php?id=<?= (int) $product['id'] ?>"
-                                        class="btn-edit"
-                                    >
-                                        Edit
-                                    </a>
-
-
-                                    <form
-                                        action="hapus.php"
-                                        method="POST"
-                                        onsubmit="return confirm(
-                                            'Yakin ingin menghapus produk ini?'
-                                        );"
-                                    >
-
-                                        <input
-                                            type="hidden"
-                                            name="id"
-                                            value="<?= (int) $product['id'] ?>"
-                                        >
-
-                                        <input
-                                            type="hidden"
-                                            name="csrf_token"
-                                            value="<?= htmlspecialchars(
-                                                $_SESSION['csrf_token'],
-                                                ENT_QUOTES,
-                                                'UTF-8'
-                                            ) ?>"
-                                        >
-
-                                        <button
-                                            type="submit"
-                                            class="btn-hapus"
-                                        >
-                                            Hapus
-                                        </button>
-
-                                    </form>
-
-                                </div>
-
-                            </td>
-
-                        </tr>
-
-                    <?php endforeach; ?>
-
-                </tbody>
-
-            </table>
-
-        </div>
 
     <?php else: ?>
 
@@ -376,7 +334,7 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <?php endif; ?>
 
 
-</main>
+</div>
 
 </body>
 
